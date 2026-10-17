@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<!--
+  sdrexplorer live map — plots ADS-B aircraft and LRRP-located radios.
+
+  Hosted inside a QWebEngineView. The Qt side pushes updates by calling the
+  global window.updateTargets(list) (once a second, and once immediately when
+  the page finishes loading so already-received targets show at once). Each
+  element is one target dict from TargetStore.snapshot():
+    { id, kind: "aircraft"|"radio", lat, lon, label, age, attrs:{...}, track:[[lat,lon],...] }
+
+  Qt also calls window.setTheme("dark"|"light"). Both themes use the same OSM
+  tiles; dark just inverts them in CSS (keeping OSM's full contrast) and flips
+  the label color so text stays readable.
+
+  Leaflet is vendored locally under web/leaflet/ and referenced with relative
+  paths: the page is loaded from a file:// URL, and a file:// origin cannot make
+  cross-origin requests (CORS blocks a CDN), so the library must be same-origin.
+  Only the map tiles need the network. Plane heading uses a CSS-rotated divIcon,
+  so no Leaflet rotation plugin is needed.
+-->
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>sdrexplorer — live map</title>
+  <link rel="stylesheet" href="leaflet/leaflet.css"/>
+  <script src="leaflet/leaflet.js"></script>
+  <style>
+    html, body { height: 100%; margin: 0; padding: 0; }
+    #map { height: 100%; }
+    body.theme-dark  #map { background: #0b0f14; }
+    body.theme-light #map { background: #e8e8e8; }
+
+    /* Dark theme reuses the light OSM tiles, inverted in CSS, so the map keeps
+       OSM's full road/terrain contrast instead of a muted dark-basemap tileset.
+       invert(1) flips white->black and dark roads->light; hue-rotate(180) sends
+       colors back around so water/parks read plausibly rather than garish.
+       The filter is applied ONCE to the whole tile *pane*, not per tile: a
+       per-.leaflet-tile filter makes every tile its own compositing layer and
+       re-filters all of them on each pan/zoom (very laggy). The tile pane holds
+       only raster tiles — markers, trails and labels live in other Leaflet panes
+       and keep their real colors. */
+    body.theme-dark .leaflet-tile-pane {
+      filter: invert(1) hue-rotate(180deg) brightness(0.95) contrast(0.9);
+    }
+
+    /* Target labels. Color is inverted from the active theme and carries a
+       halo in the opposite color so it stays legible over any tile. */
+    .tgt-label { font: 12px/1.2 monospace; white-space: nowrap; background: none;
+                 border: none; box-shadow: none; padding: 0; }
+    body.theme-dark  .tgt-label { color: #f2f2f2;
+                 text-shadow: -1px -1px 2px #000, 1px -1px 2px #000,
+                               -1px 1px 2px #000, 1px 1px 2px #000; }
+    body.theme-light .tgt-label { color: #101418;
+                 text-shadow: -1px -1px 2px #fff, 1px -1px 2px #fff,
+                               -1px 1px 2px #fff, 1px 1px 2px #fff; }
+    .plane-icon svg { display: block; filter: drop-shadow(0 0 2px rgba(0,0,0,.6)); }
+
+    #panel {
+      position: absolute; z-index: 1000; right: 8px; top: 8px;
+      background: rgba(28,30,34,.86); color: #ddd; font: 12px/1.5 sans-serif;
+      padding: 7px 10px; border-radius: 6px; box-shadow: 0 1px 6px rgba(0,0,0,.4);
+    }
+    #panel .row { white-space: nowrap; }
+    #panel b { color: #fff; }
+    .swatch { display:inline-block; width:10px; height:10px; border-radius:2px;
+              margin-right:6px; vertical-align:middle; }
+    #panel .legend { margin-top:5px; padding-top:5px; border-top:1px solid #444;
+              font-size:11px; opacity:.9; line-height:1.9; }
+    #panel .legend .swatch { margin-left:0; margin-right:4px; }
+    #panel .legend .swatch:not(:first-child) { margin-left:8px; }
+    #theme-btn {
+      margin-top: 6px; width: 100%; cursor: pointer; color: #eee;
+      background: #33373f; border: 1px solid #555; border-radius: 4px;
+      padding: 3px 6px; font: 12px/1.3 sans-serif;
+    }
+    #theme-btn:hover { background: #3f444d; }
+  </style>
+</head>
+<body class="theme-dark">
+  <div id="map"></div>
+  <div id="panel">
+    <div class="row"><span class="swatch" style="background:#4da6ff"></span><b id="n-air">0</b> aircraft</div>
+    <div class="row"><span class="swatch" style="background:#ff8c42"></span><b id="n-rad">0</b> radios</div>
+    <div class="legend">
+      <span class="swatch" style="background:#35c46b"></span>helo
+      <span class="swatch" style="background:#2f8fff"></span>heavy
+      <span class="swatch" style="background:#c471ff"></span>jet/uav
+      <span class="swatch" style="background:#7fe0c0"></span>glider
+      <span class="swatch" style="background:#ffd166"></span>balloon
+    </div>
+    <button id="theme-btn" onclick="toggleTheme()">☀ Light theme</button>
+  </div>
+  <script>
+    var map = L.map('map', { preferCanvas: true }).setView([39.5, -98.35], 4);
+
+    // One basemap: standard OSM. The dark theme reuses these same tiles and
+    // inverts them in CSS (see the .leaflet-tile filter above), so BOTH themes
+    // keep OSM's full contrast. Only the tiles need the network.
+    //
+    // Deliberately the SINGLE host tile.openstreetmap.org, NOT the {s}=a/b/c
+    // shards. The tile CDN is dual-stack (has an IPv6 AAAA record); on a box
+    // whose IPv6 is black-holed, Chromium tries IPv6 first on every fresh host
+    // and stalls seconds before falling back to IPv4. Three shard hosts = that
+    // stall paid three times on first open (~8 s of black screen). One host
+    // pays it once, and every later tile reuses that warm IPv4 connection.
+    // updateWhenZooming:false stops fetching throwaway tiles mid zoom-animation
+    // (e.g. the one-time fitBounds fly-to-aircraft); keepBuffer holds a ring of
+    // just-offscreen tiles so a small pan needs no network at all.
+    var tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                { maxZoom: 19, updateWhenZooming: false, keepBuffer: 3,
+                  attribution: '&copy; OpenStreetMap contributors' })
+     .addTo(map);
+
+    var theme = 'dark';                         // matches <body class="theme-dark">
+    window.setTheme = function (name) {
+      if (name !== 'dark' && name !== 'light') return;
+      theme = name;
+      document.body.className = 'theme-' + theme;   // drives tile filter + label color
+      var btn = document.getElementById('theme-btn');
+      btn.textContent = (theme === 'dark') ? '☀ Light theme' : '☽ Dark theme';
+    };
+    function toggleTheme() { window.setTheme(theme === 'dark' ? 'light' : 'dark'); }
+
+    // #rrggbb -> its photographic negative (#rrggbb). Used so the chosen label
+    // color flips with the theme instead of staying one fixed shade.
+    function invertHex(hex) {
+      var m = /^#?([0-9a-fA-F]{6})$/.exec(hex);
+      if (!m) return hex;
+      var n = parseInt(m[1], 16);
+      var r = 255 - ((n >> 16) & 255), g = 255 - ((n >> 8) & 255), b = 255 - (n & 255);
+      return '#' + ((1 << 24) | (r << 16) | (g << 8) | b).toString(16).slice(1);
+    }
+
+    // Called from Qt (Settings ▸ Label style) to override target-label size and
+    // color. We inject a dedicated <style> rather than mutate the base rules so
+    // the theme-specific halos (text-shadow) stay intact; !important beats the
+    // per-theme `body.theme-* .tgt-label { color }` rules. The chosen color is
+    // applied to the DARK theme and its inverse to the LIGHT theme, so toggling
+    // the theme auto-inverts the text (matching the base design where labels
+    // flip light<->dark with the basemap). Because the rules are keyed on the
+    // body.theme-* class, a later setTheme() swap re-applies with no re-push.
+    // Empty color keeps the per-theme default; sizePx <= 0 keeps the base size.
+    window.setLabelStyle = function (sizePx, color) {
+      var el = document.getElementById('label-style-override');
+      if (!el) { el = document.createElement('style'); el.id = 'label-style-override';
+                 document.head.appendChild(el); }
+      var css = '';
+      if (sizePx > 0) css += '.tgt-label { font-size: ' + sizePx + 'px !important; }';
+      if (color) {
+        css += 'body.theme-dark .tgt-label { color: ' + color + ' !important; }';
+        css += 'body.theme-light .tgt-label { color: ' + invertHex(color) +
+               ' !important; }';
+      }
+      el.textContent = css;
+    };
+
+    // id -> { marker, trail, kind }
+    var layers = {};
+    var didFit = false;
+
+    // ADS-B only broadcasts a coarse emitter *category* (never an exact type),
+    // carried in attrs.ac_class. Map each class to a distinct silhouette+color.
+    // Winged types point along heading; helo/balloon/uav/ground are orientation-
+    // agnostic. Unknown class -> the default airliner marker.
+    var AC_COLOR = {
+      heavy: '#2f8fff', large: '#4da6ff', light: '#8bd0ff', jet: '#c471ff',
+      glider: '#7fe0c0', uav: '#c471ff', balloon: '#ffd166',
+      ground: '#b0b8c4', helo: '#35c46b'
+    };
+    var AIRLINER = 'M12 2 L14 12 L22 16 L22 18 L13 15.5 L13 20 L16 22 L16 23 ' +
+                   'L12 22 L8 23 L8 22 L11 20 L11 15.5 L2 18 L2 16 L10 12 Z';
+    var DELTA    = 'M12 1 L14 13 L21 20 L21 21 L12 18 L3 21 L3 20 L10 13 Z';
+    var GLIDER   = 'M12 3 L12.7 11 L23 13 L23 14 L12.7 13.4 L12.6 20 L15 22 ' +
+                   'L15 22.6 L12 21.6 L9 22.6 L9 22 L11.4 20 L11.3 13.4 ' +
+                   'L1 14 L1 13 L11.3 11 Z';
+
+    function divSvg(w, h, inner) {
+      return L.divIcon({ className: 'plane-icon',
+        html: '<svg width="' + w + '" height="' + h + '" viewBox="0 0 24 24">' + inner + '</svg>',
+        iconSize: [w, h], iconAnchor: [w / 2, h / 2] });
+    }
+
+    function aircraftIcon(cls, heading) {
+      var hd = (typeof heading === 'number' && isFinite(heading)) ? heading : 0;
+      var col = AC_COLOR[cls] || '#4da6ff';
+
+      if (cls === 'helo') {
+        // body + tail rotate with heading; main rotor disc drawn over the top
+        var g = '<g transform="rotate(' + hd + ' 12 12)">' +
+          '<rect x="11.3" y="10" width="1.4" height="11" rx="0.5" fill="' + col + '"/>' +
+          '<circle cx="12" cy="10" r="3.4" fill="' + col + '" stroke="#0a2540" stroke-width="0.8"/>' +
+          '<rect x="9.5" y="20.4" width="5" height="1.3" rx="0.6" fill="' + col + '"/></g>' +
+          '<line x1="3" y1="10" x2="21" y2="10" stroke="' + col + '" stroke-width="1.2" opacity="0.9"/>' +
+          '<line x1="12" y1="2" x2="12" y2="18" stroke="' + col + '" stroke-width="1.2" opacity="0.45"/>';
+        return divSvg(28, 28, g);
+      }
+      if (cls === 'balloon') {
+        return divSvg(24, 26,
+          '<circle cx="12" cy="9" r="6.4" fill="' + col + '" stroke="#0a2540" stroke-width="0.8"/>' +
+          '<path d="M8 14 L16 14 L14 22 L10 22 Z" fill="' + col + '" stroke="#0a2540" stroke-width="0.6"/>');
+      }
+      if (cls === 'ground') {
+        return divSvg(20, 20,
+          '<rect x="5" y="5" width="14" height="14" rx="2" fill="' + col + '" stroke="#0a2540" stroke-width="0.8"/>');
+      }
+      // winged silhouettes, pointed along heading
+      var path = (cls === 'jet' || cls === 'uav') ? DELTA
+               : (cls === 'glider') ? GLIDER : AIRLINER;
+      var sz = (cls === 'heavy') ? 30 : (cls === 'large') ? 28
+             : (cls === 'light' || cls === 'uav') ? 22 : 26;
+      var svg = '<svg width="' + sz + '" height="' + sz + '" viewBox="0 0 24 24" ' +
+        'style="transform:rotate(' + hd + 'deg)">' +
+        '<path fill="' + col + '" stroke="#0a2540" stroke-width="0.8" d="' + path + '"/></svg>';
+      return L.divIcon({ className: 'plane-icon', html: svg,
+                         iconSize: [sz, sz], iconAnchor: [sz / 2, sz / 2] });
+    }
+
+    function radioIcon() {
+      return L.divIcon({
+        className: 'radio-icon',
+        html: '<div style="width:12px;height:12px;border-radius:50%;' +
+              'background:#ff8c42;border:2px solid #4d2a10;' +
+              'box-shadow:0 0 3px #000;"></div>',
+        iconSize: [12, 12], iconAnchor: [6, 6] });
+    }
+
+    function popupHtml(t) {
+      var a = t.attrs || {};
+      var rows = ['<b>' + (t.label || t.id) + '</b>'];
+      var kindStr = t.kind + (a.category ? ' · ' + a.category : '');
+      rows.push('<span style="color:#888">' + kindStr + ' ' + t.id + '</span>');
+      if (a.altitude != null) rows.push('Alt ' + Math.round(a.altitude) + ' ft');
+      if (a.speed != null)    rows.push('Spd ' + Math.round(a.speed) + ' kt');
+      if (a.heading != null)  rows.push('Trk ' + Math.round(a.heading) + '&deg;');
+      if (a.speed_mps != null) rows.push('Spd ' + a.speed_mps.toFixed(1) + ' m/s');
+      if (a.heading_deg != null) rows.push('Hdg ' + Math.round(a.heading_deg) + '&deg;');
+      rows.push('<span style="color:#888">age ' + t.age + 's</span>');
+      return rows.join('<br>');
+    }
+
+    // Called from Qt with the full positioned-target list.
+    window.updateTargets = function (targets) {
+      var seen = {}, nAir = 0, nRad = 0;
+      var trailColor = { aircraft: '#4da6ff', radio: '#ff8c42' };
+      var pts = [];
+      targets.forEach(function (t) {
+        if (t.lat == null || t.lon == null) return;
+        seen[t.id] = true;
+        if (t.kind === 'aircraft') nAir++; else nRad++;
+        pts.push([t.lat, t.lon]);
+        var L_ = layers[t.id];
+        var icon = (t.kind === 'aircraft')
+          ? aircraftIcon(t.attrs && t.attrs.ac_class, t.attrs && t.attrs.heading)
+          : radioIcon();
+        if (!L_) {
+          L_ = {
+            kind: t.kind,
+            trail: L.polyline(t.track || [], {
+              color: trailColor[t.kind] || '#aaa', weight: 2, opacity: 0.6 }).addTo(map),
+            marker: L.marker([t.lat, t.lon], { icon: icon }).addTo(map)
+          };
+          L_.marker.bindTooltip(t.label || t.id,
+            { permanent: true, direction: 'right', className: 'tgt-label', offset: [10, 0] });
+          L_.marker.bindPopup('');
+          layers[t.id] = L_;
+        } else {
+          L_.marker.setLatLng([t.lat, t.lon]);
+          L_.marker.setIcon(icon);
+          if (t.track) L_.trail.setLatLngs(t.track);
+          L_.marker.setTooltipContent(t.label || t.id);
+        }
+        L_.marker.setPopupContent(popupHtml(t));
+      });
+      // drop stale (pruned server-side) targets
+      Object.keys(layers).forEach(function (id) {
+        if (!seen[id]) {
+          map.removeLayer(layers[id].marker);
+          map.removeLayer(layers[id].trail);
+          delete layers[id];
+        }
+      });
+      document.getElementById('n-air').textContent = nAir;
+      document.getElementById('n-rad').textContent = nRad;
+      if (!didFit && pts.length) {           // one-time auto-zoom to first targets
+        // animate:false = jump straight there. An animated fly-to from the z4
+        // US view loads (and then discards) a whole trail of intermediate-zoom
+        // tiles over the black-holed-IPv6 network — pure wasted latency.
+        map.fitBounds(pts, { padding: [40, 40], maxZoom: 11, animate: false });
+        didFit = true;
+      }
+    };
+  </script>
+</body>
+</html>

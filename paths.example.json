@@ -1,0 +1,15 @@
+{
+  "_comment": [
+    "The install script (install.sh) writes paths.json in the install folder. Copy this file to",
+    "~/.config/sdrexplorer/paths.json for your own overrides. Leave out any key you don't need:",
+    "external builds default to <install>/ext/<name>, else the system's PATH / Python path.",
+    "Relative paths are relative to this file. Check the result with: python3 -m sdrexplorer.paths",
+    "Modules' own keys (gr_pager, op25, op25_apps, dsd_fme, ...) go here too: see each module's README."
+  ],
+  "portable": false,
+  "gr_pager": "ext/gr-pager",
+  "gr_rds": "ext/gr-rds",
+  "gr_adsb": "ext/gr-adsb/python",
+  "gr_sdrexplorer_gpu": "src/sdrexplorer/gr-sdrexplorer_gpu/build",
+  "recordings_dir": "~/sdr-recordings"
+}

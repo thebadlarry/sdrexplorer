@@ -1,0 +1,8 @@
+{
+  "_comment": "Copy to config.json and fill in ONLY if you have a paid RadioReference subscription. Without this, sdrexplorer uses the free FCC ULS provider and CSV import. sdrexplorer never scrapes radioreference.com.",
+  "radioreference": {
+    "username": "",
+    "password": "",
+    "app_key": ""
+  }
+}

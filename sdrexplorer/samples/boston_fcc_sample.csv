@@ -1,0 +1,141 @@
+Frequency,Mode,Service,Label,City,Latitude,Longitude,License,Emission
+30.90000,NFM,Business,MASSACHUSETTS BAY TRANSPORTATION AUTHORITY,"Boston, MA",42.3548,-71.0564,KCA573,FM voice (25 kHz)
+31.42000,NFM,Public Safety,MASSACHUSETTS ENVIRONMENTAL POLICE,"Boston, MA",42.3594,-71.0624,WQMP566,NFM voice (12.5 kHz) / FM voice (25 kHz)
+46.04000,NFM,Public Safety,AMERICAN NATIONAL RED CROSS,"Boston, MA",42.3540,-71.0717,KCE271,FM voice (25 kHz)
+47.42000,NFM,Public Safety,AMERICAN NATIONAL RED CROSS,"Boston, MA",42.3540,-71.0717,KCE271,"FM analog + digital (25 kHz, trunked?)"
+150.85250,DMR,Business,DC RENTALS,"Boston, MA",42.3492,-71.0752,WQZX268,DMR
+150.99500,P25,Public Safety,"DOVER, TOWN OF","Dover, MA",42.2417,-71.2800,WQIP294,NFM voice (12.5 kHz) / P25 Phase 1
+151.60250,NXDN,Business,TOWN OF LINCOLN,"Lincoln, MA",42.4317,-71.3192,WROI743,NFM voice (12.5 kHz) / NXDN96 (12.5 kHz)
+153.08000,NXDN,Business,National Railroad Passenger Corporation,"Boston, MA",42.1993,-71.0360,WPPH483,NFM voice (12.5 kHz) / NXDN48 / dPMR (6.25 kHz)
+153.09500,NFM,Business,OCEAN TRANSPORTATION,"Lynn, MA",42.4688,-70.9479,WQZB323,NFM voice (12.5 kHz)
+153.91250,DMR,Public Safety,"COHASSET, TOWN OF","Cohasset, MA",42.2340,-70.8104,WQSH970,DMR
+157.54500,NFM,Business,Cataldo Ambulance Service Inc,"Wakefield, MA",42.4904,-71.0667,WQMF652,"NFM voice (12.5 kHz) / DMR / FM digital data, 11.2 kHz"
+159.06000,P25,Public Safety,"BOSTON, CITY OF","East Boston, MA",42.3656,-71.0186,WRBY208,NFM voice (12.5 kHz) / P25 Phase 1
+159.81750,DMR,Business,"KLINGER, CHRIS","Boston, MA",42.3988,-71.2401,WQSW689,NFM voice (12.5 kHz) / DMR
+159.89250,NFM,Business,MALDEN TRANS INC DBA MALDEN TAXI INC,"Everett, MA",42.4093,-71.0395,KCB983,NFM voice (12.5 kHz) / DMR
+160.36500,NXDN,Business,National Railroad Passenger Corporation,"Boston, MA",42.2371,-71.1338,WPTZ962,NFM voice (12.5 kHz) / NXDN48 / dPMR (6.25 kHz)
+160.81500,NXDN,Business,National Railroad Passenger Corporation,"Boston, MA",42.3326,-71.0609,WPCT555,NFM voice (12.5 kHz) / NXDN48 / dPMR (6.25 kHz)
+161.20500,NXDN,Business,National Railroad Passenger Corporation,"Boston, MA",42.2371,-71.1338,WPTZ962,NFM voice (12.5 kHz) / NXDN48 / dPMR (6.25 kHz)
+217.26250,NXDN,Business,TOWN OF BRAINTREE,"Braintree, MA",42.2014,-71.0400,WRPQ714,NXDN96 (12.5 kHz)
+218.01250,NXDN,Business,TOWN OF HOLBROOK,"Holbrook, MA",42.1556,-71.0092,WSNS414,NXDN96 (12.5 kHz)
+218.85000,NXDN,Business,TOWN OF HULL,"Hull, MA",42.3056,-70.8997,WRMW405,NXDN96 (12.5 kHz)
+451.42500,NXDN,Business,Boston Red Sox,"Boston, MA",42.3458,-71.0967,WQAU419,NFM voice (12.5 kHz) / NXDN48 / dPMR (6.25 kHz)
+451.47500,DMR,Business,Atlantic Coastal Conference,"Chestnut Hill, MA",42.3350,-71.1664,WSDJ908,DMR
+451.50000,NFM,Business,DC RENTALS,"Boston, MA",42.3487,-71.0759,WSEZ310,"DMR / NFM voice (12.5 kHz) / FM digital data, 11.2 kHz"
+451.51250,NXDN,Business,Solomon Schechter Day School Inc.,"Newton Center, MA",42.2911,-71.1957,WSAN699,"DMR / NFM voice (12.5 kHz) / NXDN48 / dPMR (6.25 kHz) / NXDN48 / dPMR data (6.25 kHz) / NXDN96 (12.5 kHz) / FM digital on tone data, 8.3 kHz"
+452.22500,DMR,Business,Newton Wellesley Hospital,"Newton, MA",42.3368,-71.2189,WQHA710,NFM voice (12.5 kHz) / DMR
+452.78750,NXDN,Business,CAPE AIR,"East Boston, MA",42.3657,-71.0151,WQZV343,NFM voice (12.5 kHz) / NXDN96 (12.5 kHz) / NXDN48 / dPMR (6.25 kHz)
+452.80000,NFM,Business,GOOGLE LLC,"Cambridge, MA",42.3627,-71.0863,WQIR860,NFM voice (12.5 kHz) / DMR
+452.98750,NXDN,Business,NEW ENGLAND BAPTIST HOSPITAL,"Boston, MA",42.3293,-71.1051,WPVW228,NFM voice (12.5 kHz) / NXDN96 (12.5 kHz) / NXDN48 / dPMR (6.25 kHz)
+453.25000,P25,Public Safety,"QUINCY, CITY OF","Quincy, MA",42.2473,-71.0129,KSL347,NFM voice (12.5 kHz) / P25 Phase 1
+453.72500,DMR,Public Safety,Boston Water and Sewer Commission,"Boston, MA",42.3581,-71.0606,WXQ914,NFM voice (12.5 kHz) / DMR
+456.41250,NFM,Business,Sika Corporation,"Canton, MA",42.1575,-71.1192,WRCQ231,NFM voice (12.5 kHz) / DMR
+456.76250,DMR,Business,ADVANCED LIGHTING AND PRODUCTION,"Canton, MA",42.1831,-71.1542,WQZF510,NFM voice (12.5 kHz) / DMR
+457.08750,NXDN,Business,CAMBRIDGE PUBLIC SCHOOL DISTRICT,"Cambridge, MA",42.3704,-71.0857,WQQL308,NFM voice (12.5 kHz) / NXDN96 (12.5 kHz) / DMR
+457.17500,NXDN,Business,ALL-COMM TECHNOLOGIES INC,"Waltham, MA",42.3850,-71.2558,WPMV418,"NFM voice (12.5 kHz) / NXDN48 / dPMR (6.25 kHz) / NXDN48 (6.25 kHz) / DMR / FM digital data, 11.2 kHz"
+457.48750,DMR,Business,TRUSTEES OF THAYER ACADEMY,"Braintree, MA",42.2082,-71.0056,WQRG324,DMR
+457.71250,P25,Business,DEDHAM PUBLIC SCHOOLS,"Dedham, MA",42.2458,-71.1621,WRJJ811,NFM voice (12.5 kHz) / DMR / P25 Phase 1
+457.73750,NFM,Business,APPLIED COMMUNICATIONS SERVICES INC,"Boston, MA",42.3492,-71.0747,WPMT704,"NFM voice (12.5 kHz) / FM digital data, 11.2 kHz"
+457.81250,NXDN,Business,BRISTOL MYERS SQUIBB COMPANY,"Cambridge, MA",42.3650,-71.0806,WRAW269,NXDN96 (12.5 kHz)
+460.22500,P25,Public Safety,CITY OF BOSTON POLICE DEPARTMENT,"Roxbury, MA",42.2757,-71.1439,WRWS669,NFM voice (12.5 kHz) / P25 Phase 1 / P25 Phase 1 (LSM simulcast)
+460.41250,NFM,Public Safety,TOWN OF NATICK,"Natick, MA",42.2850,-71.3450,WQQC732,NFM voice (12.5 kHz)
+460.75000,DMR,Business,"UNITED AIRLINES, INC","Boston, MA",42.3607,-71.0176,WQVV693,NFM voice (12.5 kHz) / DMR
+461.18750,NXDN,Business,CAMBRIDGE PUBLIC SCHOOL DISTRICT,"Cambridge, MA",42.3704,-71.0857,WQQL308,NFM voice (12.5 kHz) / NXDN96 (12.5 kHz) / DMR
+461.47500,NXDN,Business,MATERION NEWTON INC,"Newton, MA",42.3094,-71.2122,WRYP662,NFM voice (12.5 kHz) / NXDN96 (12.5 kHz) / NXDN48 / dPMR (6.25 kHz)
+461.53750,NXDN,Business,DISPATCH COMMUNICATIONS LLC,"Waltham, MA",42.3889,-71.2531,WQTY254,NFM voice (12.5 kHz) / NXDN48 / dPMR (6.25 kHz)
+461.71250,DMR,Business,Courtyard Boston Norwood,"Norwood, MA",42.1754,-71.1902,WQYW943,NFM voice (12.5 kHz) / DMR
+461.90000,NFM,Business,"DESTINATION GROUP XL, INC.","Canton, MA",42.1670,-71.1088,WQGC210,NFM voice (12.5 kHz)
+462.43750,DMR,Business,NEW ENGLAND AQUARIUM,"Quincy, MA",42.2425,-70.9744,WRFK275,DMR
+462.46250,NXDN,Business,LTF CLUB OPERATIONS,"Burlington, MA",42.4930,-71.2267,WRCM984,NFM voice (12.5 kHz) / NXDN96 (12.5 kHz) / NXDN48 / dPMR (6.25 kHz)
+463.00000,P25,Public Safety,Plymouth County Sheriff's Office,"Cohassett, MA",42.2368,-70.8305,WNFD730,NFM voice (12.5 kHz) / P25 Phase 1
+463.30000,NXDN,Business,ALL-COMM TECHNOLOGIES INC,"Boston, MA",42.3523,-71.0564,WPGD227,"NFM voice (12.5 kHz) / DMR / NXDN48 / dPMR (6.25 kHz) / NXDN48 (6.25 kHz) / FM digital data, 11.2 kHz"
+463.48750,NFM,Business,SOUTH SHORE HOSPITAL,"Weymouth, MA",42.1771,-70.9189,WPXW278,NFM voice (12.5 kHz) / DMR
+463.82500,DMR,Business,GENERAL DYNAMICS,"Dedham, MA",42.2319,-71.1674,WRDH987,"NFM voice (12.5 kHz) / DMR / FM digital data, 11.2 kHz"
+464.08750,NXDN,Business,BRISTOL MYERS SQUIBB COMPANY,"Cambridge, MA",42.3650,-71.0806,WRAW269,NXDN96 (12.5 kHz)
+464.21250,NXDN,Business,DISPATCH COMMUNICATIONS LLC,"Waltham, MA",42.3889,-71.2531,WQTY254,NFM voice (12.5 kHz) / NXDN48 / dPMR (6.25 kHz)
+464.58750,DMR,Business,Canton Public Schools,"Canton, MA",42.1601,-71.1335,WQKX593,NFM voice (12.5 kHz) / DMR
+464.60000,NXDN,Business,Longwood Collective Inc,"Boston, MA",42.3297,-71.1084,WPMR201,NFM voice (12.5 kHz) / NXDN96 (12.5 kHz) / DMR
+464.78750,NFM,Business,Longwood Collective Inc,"Boston, MA",42.3297,-71.1084,WPMR201,NFM voice (12.5 kHz) / NXDN96 (12.5 kHz) / DMR
+464.86250,NXDN,Business,BRISTOL MYERS SQUIBB COMPANY,"Cambridge, MA",42.3650,-71.0806,WRAW269,NXDN96 (12.5 kHz)
+465.02500,P25,Public Safety,"BOSTON, CITY OF","Boston, MA",42.3471,-71.0828,KCA860,NFM voice (12.5 kHz) / P25 Phase 1 / P25 Phase 1 (LSM simulcast)
+466.17500,P25,Business,TUFTS UNIVERSITY,"Medford, MA",42.4089,-71.1208,WPRA508,P25 Phase 1
+466.21250,DMR,Business,SIX13 GUARD NEW ENGLAND INC,"Newton, MA",42.3384,-71.1969,WSMM277,NFM voice (12.5 kHz) / DMR
+466.31250,NFM,Business,SIX13 GUARD NEW ENGLAND INC,"Newton, MA",42.3384,-71.1969,WSMM277,NFM voice (12.5 kHz) / DMR
+466.76875,NXDN,Business,"QUIMBY, WILLIAM P","Boston, MA",42.3297,-71.1084,WQPC671,NXDN48 / dPMR (6.25 kHz)
+467.00000,DMR,Business,HEBREW REHABILITATION CENTER FOR THE AGED,"Roslindale, MA",42.2931,-71.1292,WQFF340,NFM voice (12.5 kHz) / DMR
+467.18750,NXDN,Business,LTF CLUB OPERATIONS,"Burlington, MA",42.4930,-71.2267,WRCM984,NFM voice (12.5 kHz) / NXDN96 (12.5 kHz) / NXDN48 / dPMR (6.25 kHz)
+467.46250,NXDN,Business,LTF CLUB OPERATIONS,"Burlington, MA",42.4930,-71.2267,WRCM984,NFM voice (12.5 kHz) / NXDN96 (12.5 kHz) / NXDN48 / dPMR (6.25 kHz)
+467.87500,NFM,Business,"DESTINATION GROUP XL, INC.","Canton, MA",42.1670,-71.1088,WQGC210,NFM voice (12.5 kHz)
+468.31250,DMR,Business,John Hancock / Manulife CRE,"Boston, MA",42.3506,-71.0728,WQJY542,DMR
+468.50000,NXDN,Business,Alexandria Real Estate,"Boston, MA",42.3447,-71.1026,WRUP383,NFM voice (12.5 kHz) / NXDN48 / dPMR (6.25 kHz)
+469.06250,DMR,Business,Natick Public Schools,"Natick, MA",42.2707,-71.3233,WQVY994,DMR
+469.07500,P25,Business,BENTLEY UNIVERSITY,"Waltham, MA",42.3884,-71.2198,WNDL400,NFM voice (12.5 kHz) / P25 Phase 1
+469.13750,NXDN,Business,NEW ENGLAND BAPTIST HOSPITAL,"Boston, MA",42.3293,-71.1051,WPAJ357,NFM voice (12.5 kHz) / NXDN48 / dPMR (6.25 kHz) / NXDN96 (12.5 kHz)
+469.18750,NFM,Business,GOOGLE LLC,"Cambridge, MA",42.3636,-71.0871,WSNQ786,NFM voice (12.5 kHz) / DMR
+469.36250,NXDN,Business,Boston Red Sox,"Boston, MA",42.3458,-71.0967,WQAU419,NFM voice (12.5 kHz) / NXDN48 / dPMR (6.25 kHz)
+469.78750,NXDN,Business,Longwood Collective Inc,"Boston, MA",42.3297,-71.1084,WPMR201,NFM voice (12.5 kHz) / NXDN96 (12.5 kHz) / DMR
+469.86250,DMR,Business,Shire HGT,"Cambridge, MA",42.3624,-71.0951,WROU888,DMR
+470.41250,NFM,Public Safety,MASSACHUSETTS BAY TRANSPORTATION AUTHORITY,"Quincy, MA",42.2512,-71.0045,KLU381,FM voice (25 kHz)
+470.91250,NFM,Public Safety,"RANDOLPH, TOWN OF","Canton, MA",42.2117,-71.1136,WPXP316,NFM voice (12.5 kHz)
+471.08750,P25,Public Safety,"LYNNFIELD, TOWN OF","Lynnfield, MA",42.5100,-71.0046,WII354,"NFM voice (12.5 kHz) / P25 Phase 1 / FM digital data, 11.2 kHz"
+471.93750,NFM,Business,DISPATCH COMMUNICATIONS,"Boston, MA",42.3472,-71.0825,WIL979,NFM voice (12.5 kHz) / NXDN48 / dPMR (6.25 kHz) / FM voice (25 kHz)
+471.97500,NXDN,Business,"Firebird Ventures, LLC","Boston, MA",42.3524,-71.0565,WQLE942,NXDN48 / dPMR data (6.25 kHz) / NXDN48 (6.25 kHz)
+472.57500,NXDN,Business,"Firebird Ventures, LLC","Boston, MA",42.3524,-71.0565,WQLE942,NXDN48 / dPMR data (6.25 kHz) / NXDN48 (6.25 kHz)
+473.56250,NXDN,Public Safety,"WESTON, TOWN OF","Weston, MA",42.3501,-71.3092,KCA857,"FM voice (25 kHz) / NFM voice (12.5 kHz) / NXDN96 (12.5 kHz) / FM digital data, 11.2 kHz"
+473.68750,NFM,Public Safety,MASSACHUSETTS BAY TRANSPORTATION AUTHORITY,"Boston, MA",42.3534,-71.0556,KWT692,FM voice (25 kHz)
+473.76250,P25,Public Safety,"MALDEN, CITY OF",Ma,42.4267,-71.0731,KX4383,FM voice (25 kHz) / NFM voice (12.5 kHz) / P25 Phase 1
+473.88750,NFM,Public Safety,"BOSTON, CITY OF","Boston, MA",42.3568,-71.0564,WQFV875,"FM voice (25 kHz) / NFM voice (12.5 kHz) / FM digital data, 20 kHz / FM digital data, 11.2 kHz"
+474.97500,NXDN,Business,"Firebird Ventures, LLC","Boston, MA",42.3524,-71.0565,WQLE942,NXDN48 / dPMR data (6.25 kHz) / NXDN48 (6.25 kHz)
+475.23750,NXDN,Public Safety,"WESTON, TOWN OF","Weston, MA",42.3501,-71.3092,KCA857,"FM voice (25 kHz) / NFM voice (12.5 kHz) / NXDN96 (12.5 kHz) / FM digital data, 11.2 kHz"
+475.33750,NFM,Public Safety,"SWAMPSCOTT, TOWN OF",Ma,42.4704,-70.9106,KB4304,FM voice (25 kHz) / NFM voice (12.5 kHz) / P25 Phase 1
+475.57500,NXDN,Business,"Firebird Ventures, LLC","Boston, MA",42.3524,-71.0565,WQLE942,NXDN48 / dPMR data (6.25 kHz) / NXDN48 (6.25 kHz)
+482.12500,P25,Public Safety,"WATERTOWN, TOWN OF","Watertown, MA",42.3767,-71.1732,WIK259,NFM voice (12.5 kHz) / P25 Phase 1 (LSM simulcast) / P25 Phase 1
+482.72500,NFM,Public Safety,"SALEM, CITY OF","Salem, MA",42.5210,-70.8910,WXW959,NFM voice (12.5 kHz) / P25 Phase 1
+483.43750,NFM,Public Safety,"BROOKLINE, TOWN OF","Brookline, MA",42.3083,-71.1372,WIE734,FM voice (25 kHz) / NFM voice (12.5 kHz) / P25 Phase 1
+483.66250,P25,Public Safety,"READING, TOWN OF - READING POLICE DEPARTMENT","Reading, MA",42.5312,-71.1059,KYL898,"FM voice (25 kHz) / NFM voice (12.5 kHz) / P25 Phase 1 / FM digital voice, 20 kHz / FM digital voice, 11.2 kHz / FM digital data, 11.2 kHz"
+484.12500,NXDN,Business,"Mark Abrams Revocable Trust dated March 24, 1999","Boston, MA",42.3524,-71.0565,WQLD949,NXDN48 / dPMR data (6.25 kHz) / NXDN48 (6.25 kHz)
+484.73750,NFM,Business,DCC ENGINEERING,"Boston, MA",42.3487,-71.0759,WIJ228,FM voice (25 kHz) / NFM voice (12.5 kHz) / DMR
+485.57500,NFM,Public Safety,"WELLESLEY, TOWN OF","Wellesley, MA",42.3108,-71.2697,WPLZ831,NFM voice (12.5 kHz)
+486.28750,P25,Public Safety,"WATERTOWN, TOWN OF","Watertown, MA",42.3767,-71.1732,WIK259,NFM voice (12.5 kHz) / P25 Phase 1
+486.78750,NFM,Business,DCC ENGINEERING,"Boston, MA",42.3487,-71.0759,WIJ228,FM voice (25 kHz) / DMR / NFM voice (12.5 kHz)
+486.97500,NXDN,Business,"Mark Abrams Revocable Trust dated March 24, 1999","Boston, MA",42.3524,-71.0565,WQLD949,NXDN48 / dPMR data (6.25 kHz) / NXDN48 (6.25 kHz)
+487.11250,DMR,Business,"Bear Communications, Inc.","Bosotn, MA",42.3523,-71.0564,WIM302,FM voice (25 kHz) / NFM voice (12.5 kHz) / DMR
+487.82500,NXDN,Business,"All-Comm Technologies, Inc","Waltham, MA",42.3889,-71.2531,WQLI930,NXDN48 (6.25 kHz)
+771.83125,P25,Other,MASSACHUSETTS BAY TRANSPORTATION AUTHORITY,"Boston, MA",42.3533,-71.0556,WSHA265,"P25 Phase 1 / P25 Phase 2 (TDMA) / linear (AM+PM) digital voice+data, 9.7 kHz"
+806.01250,NFM,Public Safety,"BOSTON, CITY OF","Boston, MA",42.3340,-71.0909,WPLZ982,FM voice (25 kHz)
+806.42500,NFM,Public Safety,MASSACHUSETTS BAY TRANSPORTATION AUTHORITY,"Lynn, MA",42.4673,-70.9439,WPMI460,"FM analog + digital (25 kHz, trunked?)"
+806.96250,NFM,Public Safety,MASSACHUSETTS BAY TRANSPORTATION AUTHORITY,"Lynn, MA",42.4673,-70.9439,WPMI460,"FM analog + digital (25 kHz, trunked?)"
+807.47500,NFM,Public Safety,MASSACHUSETTS BAY TRANSPORTATION AUTHORITY,"Lynn, MA",42.4673,-70.9439,WPMI460,"FM analog + digital (25 kHz, trunked?)"
+807.68750,P25,Public Safety,"CAMBRIDGE, CITY OF","Cambridge, MA",42.3708,-71.0733,WQXU677,P25 Phase 1 (LSM simulcast)
+808.42500,NFM,Public Safety,MASSACHUSETTS BAY TRANSPORTATION AUTHORITY,"Lynn, MA",42.4673,-70.9439,WPMI460,"FM analog + digital (25 kHz, trunked?)"
+808.90000,NFM,Public Safety,MASSACHUSETTS BAY TRANSPORTATION AUTHORITY,"Lynn, MA",42.4673,-70.9439,WPMI460,"FM analog + digital (25 kHz, trunked?)"
+809.01250,NFM,Public Safety,MASSACHUSETTS PORT AUTHORITY,"East Boston, MA",42.3654,-71.0181,WPAQ455,"FM voice (25 kHz) / FM analog + digital (25 kHz, trunked?)"
+809.08750,NFM,Public Safety,"Massachusetts Commonwealth of, Department of State Police","Boston, MA",42.3598,-71.0620,WNMJ500,FM voice (25 kHz)
+810.81250,NFM,Public Safety,MASSACHUSETTS PORT AUTHORITY,"East Boston, MA",42.3654,-71.0181,WPAQ455,"FM voice (25 kHz) / FM analog + digital (25 kHz, trunked?)"
+811.41250,NFM,Public Safety,"CITY OF BOSTON, POLICE DEPARTMENT","Boston, MA",42.3334,-71.0739,KKR520,FM voice (25 kHz)
+812.43750,NFM,Public Safety,MASSACHUSETTS PORT AUTHORITY,"East Boston, MA",42.3654,-71.0181,WPAQ455,"FM voice (25 kHz) / FM analog + digital (25 kHz, trunked?)"
+812.76250,P25,Public Safety,"CITY OF BOSTON, POLICE DEPARTMENT","Boston, MA",42.3543,-71.0548,KNJA565,FM voice (25 kHz) / P25 Phase 1
+813.21250,NFM,Public Safety,"Massachusetts Commonwealth of, Department of State Police","Boston, MA",42.3598,-71.0620,WNMJ500,FM voice (25 kHz)
+813.81250,NFM,Public Safety,MASSACHUSETTS PORT AUTHORITY,"East Boston, MA",42.3654,-71.0181,WPAQ455,"FM voice (25 kHz) / FM analog + digital (25 kHz, trunked?)"
+814.96250,NFM,Public Safety,"Massachusetts Commonwealth of, Department of State Police","Boston, MA",42.3598,-71.0620,WNMJ500,FM voice (25 kHz)
+851.17500,NFM,Public Safety,MASSACHUSETTS BAY TRANSPORTATION AUTHORITY,"Lynn, MA",42.4673,-70.9439,WPMI460,"FM analog + digital (25 kHz, trunked?)"
+851.47500,NFM,Public Safety,MASSACHUSETTS BAY TRANSPORTATION AUTHORITY,"Lynn, MA",42.4673,-70.9439,WPMI460,"FM analog + digital (25 kHz, trunked?)"
+852.17500,NFM,Public Safety,MASSACHUSETTS BAY TRANSPORTATION AUTHORITY,"Lynn, MA",42.4673,-70.9439,WPMI460,"FM analog + digital (25 kHz, trunked?)"
+852.78750,NFM,Public Safety,"BOSTON, CITY OF","Boston, MA",42.3151,-71.0978,WPMD613,"FM voice (25 kHz) / FM digital data, 20 kHz / FM digital voice, 20 kHz"
+852.93750,P25,Public Safety,"BOSTON, CITY OF","Milton, MA",42.2119,-71.1137,WRQA914,P25 Phase 1 / P25 Phase 2 (TDMA)
+852.97500,NFM,Public Safety,MASSACHUSETTS BAY TRANSPORTATION AUTHORITY,"Lynn, MA",42.4673,-70.9439,WPMI460,"FM analog + digital (25 kHz, trunked?)"
+853.72500,NFM,Public Safety,MASSACHUSETTS BAY TRANSPORTATION AUTHORITY,"Lynn, MA",42.4673,-70.9439,WPMI460,"FM analog + digital (25 kHz, trunked?)"
+853.95000,NFM,Public Safety,MASSACHUSETTS BAY TRANSPORTATION AUTHORITY,"Lynn, MA",42.4673,-70.9439,WPMI460,"FM analog + digital (25 kHz, trunked?)"
+855.06250,NFM,Public Safety,MASSACHUSETTS PORT AUTHORITY,"East Boston, MA",42.3654,-71.0181,WPAQ455,"FM voice (25 kHz) / FM analog + digital (25 kHz, trunked?)"
+855.28750,NFM,Business,"American Airlines Group, Inc.","East Boston, MA",42.3626,-71.0189,WNIP763,FM voice (25 kHz)
+856.81250,NFM,Public Safety,MASSACHUSETTS PORT AUTHORITY,"East Boston, MA",42.3654,-71.0181,WPAQ455,"FM voice (25 kHz) / FM analog + digital (25 kHz, trunked?)"
+857.01250,P25,Public Safety,MASSACHUSETTS PORT AUTHORITY,"Bedford, MA",42.4631,-71.2911,WSCY230,P25 Phase 1 / P25 Phase 1 (LSM simulcast) / P25 Phase 2 (TDMA)
+857.28750,NFM,Public Safety,"CAMBRIDGE, CITY OF","Cambridge, MA",42.3723,-71.0867,WNGH670,FM voice (25 kHz)
+858.43750,NFM,Public Safety,MASSACHUSETTS PORT AUTHORITY,"East Boston, MA",42.3654,-71.0181,WPAQ455,"FM voice (25 kHz) / FM analog + digital (25 kHz, trunked?)"
+859.23750,NFM,Public Safety,"Massachusetts Commonwealth of, Department of State Police","South Boston, MA",42.3459,-71.0575,WQBC488,P25 Phase 1 / NFM voice (12.5 kHz) / FM tone data (12.5 kHz) / FM voice (25 kHz) / FM tone data (25 kHz)
+859.81250,NFM,Public Safety,MASSACHUSETTS PORT AUTHORITY,"East Boston, MA",42.3654,-71.0181,WPAQ455,"FM voice (25 kHz) / FM analog + digital (25 kHz, trunked?)"
+859.96250,P25,Public Safety,"Massachusetts Commonwealth of, Department of State Police","South Boston, MA",42.3459,-71.0575,WQBC488,P25 Phase 1 / NFM voice (12.5 kHz) / FM tone data (12.5 kHz) / FM voice (25 kHz) / FM tone data (25 kHz)
+859.98750,NFM,Public Safety,"Massachusetts Commonwealth of, Department of State Police","South Boston, MA",42.3459,-71.0575,WQBC488,P25 Phase 1 / NFM voice (12.5 kHz) / FM tone data (12.5 kHz) / FM tone data (25 kHz) / FM voice (25 kHz)
+861.56250,DMR,Business,"Wynn MA, LLC, DBA:  Encore Boston Harbor","Everett, MA",42.3952,-71.0694,WRYP203,"FM voice (25 kHz) / DMR / linear (AM+PM) multi-channel digital voice+data, 21.7 kHz"
+896.42500,NFM,Business,"INDUSTRIAL WIRELESS TECHNOLOGIES, INC.","Quincy, MA",42.2471,-71.0484,WPQG576,FM voice (25 kHz)
+938.90000,NFM,Business,"DELAWARE NORTH COMPANIES, INC. - BOSTON","Boston, MA",42.3659,-71.0631,WQJK593,FM voice (25 kHz)

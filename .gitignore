@@ -1,0 +1,71 @@
+# Runtime state, user data, and downloads live inside the package and are not
+# tracked. (git does NOT support inline comments — keep patterns on their own lines.)
+sdrexplorer/memory/
+sdrexplorer/recordings/
+sdrexplorer/uls/
+sdrexplorer/config.json
+sdrexplorer/tools/atsc_poc.py
+# written in the working directory when the app runs: GNU Radio's prefs when HOME is
+# redirected (tests / sandboxed runs)
+.gnuradio/
+# this machine's external-build locations and launcher tweaks (see paths.example.json)
+/paths.json
+run_sdrexplorer.local.sh
+
+# Python caches / build artifacts
+**/__pycache__/
+*.py[cod]
+build/
+dist/
+*.egg-info/
+
+# Local editor / agent tooling — per-developer, not part of the project.
+# Each AI assistant drops its own config / chat history / caches; keep them
+# local so collaborators using different tools don't clobber each other.
+.idea/
+.vscode/
+
+# Claude Code
+.claude/
+.mcp.json
+
+# Gemini (CLI / Code Assist)
+.gemini/
+GEMINI.md
+
+# GitHub Copilot
+.copilot/
+.copilotignore
+
+# Cursor
+.cursor/
+.cursorrules
+.cursorignore
+
+# Windsurf / Codeium
+.windsurf/
+.windsurfrules
+.codeium/
+
+# Continue / Cline / Roo
+.continue/
+.clinerules
+.roo/
+
+# Aider
+.aider*
+
+# OpenAI Codex CLI
+.codex/
+
+# Shared agent instructions (kept local, like the rest of the tooling above)
+AGENTS.md
+
+# per-install runtime venvs (classifier backends etc.)
+/venv-*/
+
+# Private notes: not published (notes/ is its own private git repo).
+/notes/
+
+# Claude Code project notes (machine paths, private state): never published
+/CLAUDE.md

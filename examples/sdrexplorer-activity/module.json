@@ -1,0 +1,8 @@
+{
+  "name": "activity",
+  "title": "Band activity (example)",
+  "api": ">=1.0,<2.0",
+  "pip": ["numpy>=1.24"],
+  "ext": [],
+  "platforms": ["linux", "darwin", "win32"]
+}

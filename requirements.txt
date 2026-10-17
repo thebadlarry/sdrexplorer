@@ -1,0 +1,16 @@
+# Python (pip) dependencies for sdrexplorer.
+#
+# NOTE: the heavy pieces — GNU Radio 3.10 and gr-osmosdr — are NOT pip-installable
+# and must come from your system package manager or a conda/radioconda env (see
+# README). This file lists only what pip can provide.
+
+PyQt5>=5.15
+numpy>=1.24
+scipy>=1.10      # the snapshot ring's sub-band filter, the explorer DSP
+
+# Optional: only needed for the RadioReference data source (Premium API).
+# zeep>=4.2
+
+# Optional: signal explorer FFT / slicing on an NVIDIA GPU (see README "GPU acceleration").
+# Pin numpy with it: CuPy 14 requires numpy 2, which GNU Radio 3.10.9 can't load.
+# cupy-cuda12x==13.6.0

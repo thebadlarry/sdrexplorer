@@ -1,0 +1,27 @@
+# Cross-platform (Linux / macOS / Windows) environment for sdrexplorer via conda.
+# Uses conda-forge, which ships GNU Radio 3.10 + gr-osmosdr + HackRF/RTL-SDR
+# support (this is what radioconda is built from).
+#
+#   conda env create -f environment.yml     # or: mamba env create -f environment.yml
+#   conda activate sdrexplorer
+#   python -m sdrexplorer.app                    # or ./sdrexplorer/run_sdrexplorer.sh
+#
+# NOTE: modules' external builds (e.g. the digital module's decoders) are not on
+# conda-forge; see each module's README.
+name: sdrexplorer
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - gnuradio            # metapackage: core + audio + filter/fft/analog/digital
+  - gnuradio-osmosdr    # osmosdr.source used by radio.py (HackRF/RTL front end)
+  - soapysdr-module-hackrf
+  - soapysdr-module-rtlsdr
+  - hackrf              # host lib + hackrf_info CLI
+  - rtl-sdr             # host lib + rtl_test CLI
+  - pyqt                # PyQt5
+  - numpy
+  - scipy
+  - pip
+  - pip:
+      - zeep            # optional: RadioReference data source

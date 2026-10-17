@@ -1,0 +1,30 @@
+# gr-osmosdr (osmocom gr-osmosdr @ 73d8982 = v0.2.5): hackrf_sink_c::stop() could wait forever when PTT is released.
+# The TX callback notifies and returns -1, but libhackrf clears its streaming flag only after the callback
+# returns, so stop() can re-check, see "still streaming" and wait for a notify that never comes (more likely
+# under CPU load). Re-check every 100 ms instead. Apply in a clean checkout: git apply
+# Upstream-Status: Pending (to be offered to osmocom gr-osmosdr)
+diff --git a/lib/hackrf/hackrf_sink_c.cc b/lib/hackrf/hackrf_sink_c.cc
+index 54ff3ef..b2c36fd 100644
+--- a/lib/hackrf/hackrf_sink_c.cc
++++ b/lib/hackrf/hackrf_sink_c.cc
+@@ -32,6 +32,7 @@
+ #include <stdexcept>
+ #include <iostream>
+ #include <algorithm>
++#include <chrono>
+ #ifdef USE_AVX
+ #include <immintrin.h>
+ #elif USE_SSE2
+@@ -260,8 +261,11 @@ bool hackrf_sink_c::stop()
+ 
+     _stopping = true;
+ 
++    // The TX callback notifies and returns -1 once the buffers are drained, but libhackrf only clears its
++    // streaming flag after the callback has returned: re-check periodically instead of relying on a
++    // notify that may come before the flag changes (otherwise this can wait forever).
+     while (hackrf_is_streaming(_dev.get()) == HACKRF_TRUE)
+-      _buf_cond.wait( lock );
++      _buf_cond.wait_for( lock, std::chrono::milliseconds(100) );
+   }
+ 
+   hackrf_common::stop();

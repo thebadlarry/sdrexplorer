@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sdrexplorer-activity"
+version = "1.0.0"
+description = "Example sdrexplorer module: marks busy channels in the band on the waterfall"
+requires-python = ">=3.11"
+license = { file = "../../LICENSE" }
+classifiers = ["License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+               "Programming Language :: Python :: 3"]
+dependencies = ["numpy>=1.24"]
+
+# The one line that makes this a module: the core reads this table (from this file in a checkout, or
+# from the installed package's metadata) and imports the class it names.
+[project.entry-points."sdrexplorer.modules"]
+activity = "sdrexplorer_activity.module:ActivityModule"
+
+[tool.setuptools.packages.find]
+where = ["src"]

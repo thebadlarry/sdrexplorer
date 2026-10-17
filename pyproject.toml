@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sdrexplorer"
+version = "1.0.0"
+description = "A tool for exploring and analyzing digital and analog signals using software defined radio (HackRF / RTL-SDR), built on GNU Radio 3.10 + PyQt5"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+authors = [{ name = "Bad Larry", email = "thebadlarry@proton.me" }]
+keywords = ["sdr", "scanner", "hackrf", "rtl-sdr", "gnuradio", "p25", "dmr", "pocsag"]
+classifiers = [
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Programming Language :: Python :: 3",
+    "Topic :: Communications :: Ham Radio",
+    "Environment :: X11 Applications :: Qt",
+    "Operating System :: POSIX :: Linux",
+]
+
+# Only the pip-installable pieces are listed. GNU Radio 3.10 and gr-osmosdr are
+# NOT on PyPI and must come from the system package manager or radioconda; modules'
+# external builds are separate (see their READMEs).
+dependencies = [
+    "PyQt5>=5.15",
+    "numpy>=1.24",
+    "scipy>=1.10",
+]
+
+[project.optional-dependencies]
+radioreference = ["zeep>=4.2"]      # only for the RadioReference data source
+map = ["PyQtWebEngine>=5.15"]       # only for the live aircraft/radio map
+
+[project.gui-scripts]
+sdrexplorer = "sdrexplorer.app:main"
+
+[tool.setuptools.packages.find]
+include = ["sdrexplorer*"]
+
+[tool.setuptools.package-data]
+sdrexplorer = ["samples/*.csv", "samples/*.txt", "config.example.json",
+           "api/worker_server/*.py",
+           "web/*.html", "web/leaflet/*.js", "web/leaflet/*.css",
+           "web/leaflet/images/*.png", "web/leaflet/LICENSE"]

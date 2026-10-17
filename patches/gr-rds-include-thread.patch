@@ -1,0 +1,15 @@
+# gr-rds (bastibl/gr-rds @ 58facb6, maint-3.10): include <thread> for std::this_thread.
+# GCC 13 (Ubuntu 24.04) pulls it in indirectly; GCC 12 (Debian 12) does not. Apply in a clean checkout: git apply
+# Upstream-Status: Submitted (pull request to bastibl/gr-rds maint-3.10, 2026-10-16)
+diff --git a/lib/encoder_impl.cc b/lib/encoder_impl.cc
+index 66e31c6..003fac5 100644
+--- a/lib/encoder_impl.cc
++++ b/lib/encoder_impl.cc
+@@ -26,6 +26,7 @@
+ #include <ctype.h>
+ #include <time.h>
+ #include <chrono>
++#include <thread>          // std::this_thread (GCC 12 does not pull it in through <chrono>)
+ #include <cstdio>
+ 
+ using namespace gr::rds;
